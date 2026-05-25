@@ -1,0 +1,396 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; image-rendering: pixelated; }
+
+body {
+  background: #fffeb3;
+  font-family: 'Press Start 2P', monospace;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 3rem;
+}
+
+.page {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-card {
+  width: 100%;
+  background: #fb2e01;
+  border: 4px solid black;
+  box-shadow: 6px 6px 0 black;
+  padding: 1.8rem 1.4rem 1.4rem;
+  text-align: center;
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+
+.header-card::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px;
+  width: 12px; height: 12px;
+  background: #fffeb3;
+  border-right: 4px solid black;
+  border-bottom: 4px solid black;
+}
+.header-card::after {
+  content: '';
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 12px; height: 12px;
+  background: #fffeb3;
+  border-left: 4px solid black;
+  border-bottom: 4px solid black;
+}
+
+.avatar-area {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.avatar-sprite {
+  width: 80px;
+  height: 80px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.name {
+  font-size: 1rem;
+  color: #fffeb3;
+  text-shadow: 3px 3px 0 black;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.handle {
+  font-size: 0.65rem;
+  color: #ffe28a;
+  text-shadow: 2px 2px 0 black;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.bio {
+  font-size: 0.52rem;
+  color: white;
+  line-height: 2.2;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.6);
+}
+
+.section-label {
+  width: 100%;
+  margin-bottom: 0.9rem;
+  display: flex;
+  gap: 0;
+  align-items: flex-end;
+}
+
+.px-divider-label {
+  font-size: 0.52rem;
+  color: #666547;
+  background: #fffeb3;
+  padding: 5px 10px;
+  border: 3px solid black;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 3px 3px 0 black;
+}
+
+.divider-line {
+  flex: 1;
+  border-bottom: 4px solid black;
+  box-shadow: 0 3px 0 black;
+  margin-bottom: 4px;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: white;
+  border: 4px solid black;
+  box-shadow: 5px 5px 0 black;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+
+.link-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 black;
+}
+
+.link-btn:active {
+  transform: translate(5px, 5px);
+  box-shadow: 0 0 0 black;
+}
+
+.link-icon-box {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-right: 4px solid black;
+  font-size: 1.3rem;
+}
+
+.bg-red    { background: #fb2e01; }
+.bg-green  { background: #6fcb9f; }
+.bg-yellow { background: #ffe28a; }
+.bg-olive  { background: #666547; }
+.bg-cream  { background: #fffeb3; }
+
+.link-text {
+  flex: 1;
+  padding: 0 0.9rem;
+  font-size: 0.55rem;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+.link-arrow {
+  width: 40px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 4px solid black;
+  font-size: 0.7rem;
+  color: black;
+  background: #ffe28a;
+}
+
+/* ── socials ── */
+.socials {
+  width: 100%;
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+  justify-content: flex-start;
+}
+
+.social-btn {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid black;
+  box-shadow: 4px 4px 0 black;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-size: 1.4rem;
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+
+.social-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 black;
+}
+
+.s1 { background: #fb2e01; }
+.s2 { background: #6fcb9f; }
+.s3 { background: #ffe28a; }
+
+.footer-bar {
+  width: 100%;
+  background: black;
+  border: 4px solid black;
+  box-shadow: 5px 5px 0 #666547;
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-txt {
+  font-size: 0.48rem;
+  color: #6fcb9f;
+  letter-spacing: 0.1em;
+}
+
+.heart { font-size: 0.8rem; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.blink { animation: blink 1s step-end infinite; }
+
+.pixel-deco {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.px-block { width: 13px; height: 13px; border: 2px solid black; flex-shrink: 0; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.header-card      { animation: slideIn 0.3s ease both; }
+.link-btn:nth-child(1) { animation: slideIn 0.3s 0.08s ease both; }
+.link-btn:nth-child(2) { animation: slideIn 0.3s 0.14s ease both; }
+.link-btn:nth-child(3) { animation: slideIn 0.3s 0.20s ease both; }
+.link-btn:nth-child(4) { animation: slideIn 0.3s 0.26s ease both; }
+.link-btn:nth-child(5) { animation: slideIn 0.3s 0.32s ease both; }
+.socials               { animation: slideIn 0.3s 0.38s ease both; }
+.footer-bar            { animation: slideIn 0.3s 0.44s ease both; }
+</style>
+
+<div class="page">
+
+  <div class="pixel-deco">
+    <div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:#6fcb9f"></div>
+  </div>
+
+  <div class="header-card">
+    <div class="avatar-area">
+      <svg class="avatar-sprite" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="0" width="10" height="2" fill="black"/>
+        <rect x="2" y="1" width="12" height="2" fill="black"/>
+        <rect x="2" y="3" width="12" height="7" fill="#ffe28a"/>
+        <rect x="4" y="5" width="2" height="2" fill="black"/>
+        <rect x="10" y="5" width="2" height="2" fill="black"/>
+        <rect x="4" y="5" width="1" height="1" fill="white"/>
+        <rect x="10" y="5" width="1" height="1" fill="white"/>
+        <rect x="5" y="8" width="1" height="1" fill="black"/>
+        <rect x="10" y="8" width="1" height="1" fill="black"/>
+        <rect x="6" y="9" width="4" height="1" fill="black"/>
+        <rect x="1" y="5" width="1" height="2" fill="#ffe28a"/>
+        <rect x="14" y="5" width="1" height="2" fill="#ffe28a"/>
+        <rect x="6" y="10" width="4" height="1" fill="#ffe28a"/>
+        <rect x="3" y="11" width="10" height="5" fill="#fb2e01"/>
+        <rect x="5" y="11" width="2" height="2" fill="white"/>
+        <rect x="9" y="11" width="2" height="2" fill="white"/>
+        <rect x="1" y="11" width="2" height="4" fill="#fb2e01"/>
+        <rect x="13" y="11" width="2" height="4" fill="#fb2e01"/>
+        <rect x="1" y="15" width="2" height="1" fill="#ffe28a"/>
+        <rect x="13" y="15" width="2" height="1" fill="#ffe28a"/>
+      </svg>
+    </div>
+    <p class="name">M. Fazriel Faddilah</p>
+    <p class="handle"></p>
+    <p class="bio">Fullstack Developer · IT Student<br>Problem Solver · Bogor, Indonesia</p>
+  </div>
+
+  <div class="section-label">
+    <div class="px-divider-label">► MY LINKS</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="links">
+
+    <a class="link-btn" href="https://professional-portfolio-eta-ten.vercel.app/?_vercel_share=9OubsiC9pXlNXZNZk53lXUdZNQWxiXa9" target="_blank">
+      <div class="link-icon-box bg-red">
+        <img src="img/favicon.svg" alt="Icons Web Portfolio" style="width:24px; height:24px;">
+      </div>
+      <span class="link-text">Portfolio Website</span>
+      <span class="link-arrow">►</span>
+    </a>
+
+    <a class="link-btn" href="https://wa.me/6289608446726" target="_blank">
+      <div class="link-icon-box bg-olive" style="color:white">✉️</div>
+      <span class="link-text">Hire Me / Contact</span>
+      <span class="link-arrow">►</span>
+    </a>
+
+    <!-- <a class="link-btn" href="#">
+      <div class="link-icon-box bg-green">💼</div>
+      <span class="link-text">Latest Project</span>
+      <span class="link-arrow">►</span>
+    </a> -->
+
+    <!-- <a class="link-btn" href="#">
+      <div class="link-icon-box bg-yellow">🎨</div>
+      <span class="link-text">Behance / Dribbble</span>
+      <span class="link-arrow">►</span>
+    </a> -->
+
+    <!-- <a class="link-btn" href="#">
+      <div class="link-icon-box bg-cream">🛒</div>
+      <span class="link-text">My Store / Products</span>
+      <span class="link-arrow">►</span>
+    </a> -->
+
+  </div>
+
+  <div class="section-label">
+    <div class="px-divider-label">► SOCIALS</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="socials">
+
+    <!-- Instagram -->
+    <a class="social-btn s1" href="https://www.instagram.com/zree.l/" target="_blank" title="Instagram">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="black" stroke-width="2.2" fill="none"/>
+        <circle cx="12" cy="12" r="5" stroke="black" stroke-width="2.2" fill="none"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="black"/>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="social-btn s2" href="https://www.linkedin.com/in/muhammad-fazriel-faddilah-1a436b382/" target="_blank" title="LinkedIn">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="3" stroke="black" stroke-width="2.2" fill="none"/>
+        <line x1="7" y1="10" x2="7" y2="17" stroke="black" stroke-width="2.2" stroke-linecap="square"/>
+        <circle cx="7" cy="7.5" r="1.3" fill="black"/>
+        <path d="M11 10v7M11 13c0-1.657 1.343-3 3-3s3 1.343 3 3v4" stroke="black" stroke-width="2.2" stroke-linecap="square"/>
+      </svg>
+    </a>
+
+    <!-- GitHub -->
+    <a class="social-btn s3" href="https://github.com/FazrielF" target="_blank" title="GitHub">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" stroke="black" stroke-width="1.5" fill="none"/>
+      </svg>
+    </a>
+
+  </div>
+
+  <div class="footer-bar">
+    <span class="footer-txt">© 2025 Fazriel Faddilah</span>
+    <div style="display:flex; gap:4px;">
+      <span class="heart">❤️</span>
+      <span class="heart">❤️</span>
+      <span class="heart blink">❤️</span>
+    </div>
+  </div>
+
+  <div class="pixel-deco" style="margin-top:0.5rem;">
+    <div class="px-block" style="background:black"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#666547"></div><div class="px-block" style="background:#fffeb3"></div><div class="px-block" style="background:#ffe28a"></div><div class="px-block" style="background:#6fcb9f"></div><div class="px-block" style="background:#fb2e01"></div><div class="px-block" style="background:black"></div><div class="px-block" style="background:#666547"></div>
+  </div>
+
+</div>
